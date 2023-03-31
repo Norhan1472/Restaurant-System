@@ -1,5 +1,6 @@
 package com.restaurant.restaurantsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,6 @@ import java.util.Set;
 @Table(name = "category")
 public class Category extends CommonData{
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private Set<Order>orders = new HashSet<>();
 }

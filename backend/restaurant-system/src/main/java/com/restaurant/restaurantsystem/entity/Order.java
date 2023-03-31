@@ -1,5 +1,6 @@
 package com.restaurant.restaurantsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,9 @@ public class Order extends CommonData{
     @Column(name = "description")
     @Lob
     private String description;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
+    @JsonIgnore
     private Category category;
 
 }
