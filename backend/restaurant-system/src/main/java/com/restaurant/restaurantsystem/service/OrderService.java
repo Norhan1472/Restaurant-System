@@ -19,6 +19,11 @@ public class OrderService {
     public List<Order>getAllOrders(){
         return orderRepository.findAll();
     }
+
+    public List<Order>getOrderByCategoryId(long id){
+        return orderRepository.findByCategoryId(id);
+    }
+
     public String uploadImage(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if(fileName.contains("..")){
