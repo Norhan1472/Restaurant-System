@@ -16,6 +16,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "category")
 public class Category extends CommonData{
+    @Column(name = "categoryLogo")
+    private String categoryLogo;
     @OneToMany(mappedBy = "category")
     @JsonIgnore
     private Set<Order>orders = new HashSet<>();

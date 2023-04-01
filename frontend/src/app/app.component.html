@@ -17,15 +17,7 @@
       </div>
 
       <nav class="nav-menu">
-        <ul>
-          <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about"><i class="fas fa-utensils"></i> <span>Foods</span></a></li>
-          <li><a href="#resume"><i class="fas fa-cocktail"></i> <span>Cold Drinks</span></a></li>
-          <li><a href="#portfolio"><i class="fas fa-coffee"></i> Hot Drinks</a></li>
-          <li><a href="#services"><i class="fas fa-cookie-bite"></i> Sweets</a></li>
-          <li><a href="#contact"><i class="fas fa-meat"></i>Other Food</a></li>
-
-        </ul>
+        <app-category-items></app-category-items>
       </nav><!-- .nav-menu -->
       <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
@@ -70,8 +62,10 @@
   <!-- Start Order -->
   <nav class="maindiv">
     <div class="container">
-      <div class="row">
-        <div class="col-md-4 myorder">
+      <app-order-items></app-order-items>
+      
+        
+        <!--<div class="col-md-4 myorder">
           <div class="card">
             <img src="assets/img/logo-cook.jpg" alt="Denim Jeans" style="width:100%">
             <h1>Tailored Jeans</h1>
@@ -241,17 +235,8 @@
             <p class="dis">Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
             <button class="btn btn-primary">Add to Cart</button>
           </div>
-        </div>
-        <div class="col-md-4 myorder">
-          <div class="card">
-            <img src="assets/img/logo-cook.jpg" alt="Denim Jeans" style="width:100%">
-            <h1>Tailored Jeans</h1>
-            <p class="price">$19.99</p>
-            <p class="dis">Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-            <button class="btn btn-primary">Add to Cart</button>
-          </div>
-        </div>
-        </div>
+        </div>-->
+      
       </div>
   </nav>
   <!-- ======= Footer ======= -->

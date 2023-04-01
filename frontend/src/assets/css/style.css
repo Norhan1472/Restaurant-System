@@ -1159,3 +1159,17 @@ section {
   background-color: tomato;
   
 }
+img
+{
+  height: 220px;
+}
+.order-item {
+  height: 382px;
+}
+#hero h1 {
+  font-size: 23px;
+  font-family: revert;
+}
+.btn:not(:disabled):not(.disabled) {
+  margin: 0px 0px 0px 0px !important;
+}

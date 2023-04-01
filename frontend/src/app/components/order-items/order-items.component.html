@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-4 myorder" *ngFor="let order of orders">
+    <div class="card">
+      <img src="assets/img/{{order.img}}.jpg" alt="Denim Jeans" style="width:100%">
+      <h1>{{order.name}}</h1>
+      <p class="price">{{order.price | currency:"USD"}}</p>
+     <!-- <p class="dis">Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>-->
+      <button class="btn btn-primary">Add to Cart</button>
+    </div>
+  </div>
+</div>
