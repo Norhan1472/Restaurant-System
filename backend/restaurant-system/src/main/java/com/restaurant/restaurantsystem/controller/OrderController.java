@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/order/v1")
 public class OrderController {
     private OrderService orderService;
