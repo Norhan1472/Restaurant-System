@@ -4,26 +4,25 @@ import { Order } from 'src/app/model/order';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
-  selector: 'app-order-items',
-  templateUrl: './order-items.component.html',
-  styleUrls: ['./order-items.component.css']
+  selector: 'app-dropdown-category',
+  templateUrl: './dropdown-category.component.html',
+  styleUrls: ['./dropdown-category.component.css']
 })
-export class OrderItemsComponent implements OnInit{
-  orders : Order[] = [];
+export class DropdownCategoryComponent implements OnInit{
+  orders : Order[]=[];
 
   constructor(private orderService:OrderService,
-              private route:ActivatedRoute){
-  }
+              private route:ActivatedRoute){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       ()=>{
-        this.getData();
+        this.getOrders();
       }
     )
+  
   }
-
-  getData(){
+  getOrders(){
     let checkCategoryId = this.route.snapshot.paramMap.has('id');
     if(checkCategoryId){
       this.getOrderByCategoryId();
@@ -32,10 +31,10 @@ export class OrderItemsComponent implements OnInit{
     }
   }
 
-  getAllOrders():void{
+  getAllOrders(){
     this.orderService.getAllOrders().subscribe(
       data=>{
-        this.orders = data;
+          this.orders=data;
       },
       error=>{
         console.log(error);
@@ -43,15 +42,17 @@ export class OrderItemsComponent implements OnInit{
     )
   }
 
-    getOrderByCategoryId(){
-      let categoryId = this.route.snapshot.paramMap.get('id');
-      this.orderService.getOrderByCategoryId(categoryId).subscribe(
-       data=>{
-        this.orders=data;
-       },
-       error=>{
+  getOrderByCategoryId(){
+    let categoryId = this.route.snapshot.paramMap.get('id');
+    this.orderService.getOrderByCategoryId(categoryId).subscribe(
+      data=>{
+        this.orders = data;
+      },
+      error=>{
         console.log(error);
-       }
-      )
-    }
+      }
+    ) 
+  }
+
+
 }

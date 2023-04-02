@@ -1,0 +1,9 @@
+
+<div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngFor="let order of orders">
+    <a class="dropdown-item" routerLink="category/{{order.id}}" >
+        {{order.name}}
+    </a>
+    <!--<a class="dropdown-item" href="#">Another action</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Something else here</a>-->
+  </div>

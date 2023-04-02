@@ -16,6 +16,12 @@ export class OrderService {
       map(
         response=>response
       )
-    )
-  }
+    )}
+    getOrderByCategoryId(id:any):Observable<Order[]>{
+      return this.http.get<Order[]>(`${this.baseLink}orderByCategoryId?id=${id}`).pipe(
+        map(
+          response=>response
+        )
+      )
+    }
 }
