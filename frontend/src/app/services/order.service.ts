@@ -28,4 +28,8 @@ export class OrderService {
     getOrderByKey(key:any):Observable<Order[]>{
       return this.http.get<Order[]>(`${this.baseLink}orderByKey?key=${key}`);
     }
+    //http://localhost:8080/api/order/v1/orderById?id=1
+    getOrderById(id:any):Observable<Order>{
+      return this.http.get<Order>(`${this.baseLink}orderById?id=${id}`)
+    }
 }

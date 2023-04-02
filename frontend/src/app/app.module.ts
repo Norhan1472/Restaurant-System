@@ -7,6 +7,7 @@ import { OrderItemsComponent } from './components/order-items/order-items.compon
 import { CategoryItemsComponent } from './components/category-items/category-items.component';
 import { DropdownCategoryComponent } from './components/dropdown-category/dropdown-category.component';
 import { SearchOrderComponent } from './components/search-order/search-order.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SearchOrderComponent } from './components/search-order/search-order.com
     OrderItemsComponent,
     CategoryItemsComponent,
     DropdownCategoryComponent,
-    SearchOrderComponent
+    SearchOrderComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
