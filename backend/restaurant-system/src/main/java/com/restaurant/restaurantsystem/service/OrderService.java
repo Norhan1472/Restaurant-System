@@ -27,6 +27,9 @@ public class OrderService {
     public List<Order>getOrderByKey(String key){
         return orderRepository.findByNameContaining(key);
     }
+    public Order getOrderById(long id){
+        return orderRepository.findById(id).get();
+    }
 
     public String uploadImage(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());

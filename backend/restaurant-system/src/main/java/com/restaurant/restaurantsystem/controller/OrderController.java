@@ -32,6 +32,11 @@ public class OrderController {
     public List<Order>getOrderByKey(@RequestParam String key){
         return orderService.getOrderByKey(key);
     }
+    //http://localhost:8080/api/order/v1/orderById?id=value
+    @GetMapping("orderById")
+    public Order getOrderById(@RequestParam long id){
+        return orderService.getOrderById(id);
+    }
     //http://localhost:8080/api/order/v1/uploadImage
     @PostMapping("uploadImage")
     public String uploadImage(@RequestBody MultipartFile file) throws IOException {
