@@ -22,9 +22,15 @@ public class OrderController {
     public List<Order>getAllOrders(){
         return orderService.getAllOrders();
     }
+    //http://localhost:8080/api/order/v1/orderByCategoryId?id=value
     @GetMapping("orderByCategoryId")
     public List<Order>getOrderByCategoryId(@RequestParam long id){
         return orderService.getOrderByCategoryId(id);
+    }
+    //http://localhost:8080/api/order/v1/orderByKey?key=value
+    @GetMapping("orderByKey")
+    public List<Order>getOrderByKey(@RequestParam String key){
+        return orderService.getOrderByKey(key);
     }
     //http://localhost:8080/api/order/v1/uploadImage
     @PostMapping("uploadImage")
