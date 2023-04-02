@@ -4,6 +4,7 @@ import { CategoryItemsComponent } from './components/category-items/category-ite
 import { OrderItemsComponent } from './components/order-items/order-items.component';
 
 const routes: Routes = [
+  {path:'category/:key',component:OrderItemsComponent},
   {path:'category/:id',component:OrderItemsComponent},
   {path:'allCategories',component:CategoryItemsComponent},
   {path:'allOrders',component:OrderItemsComponent},

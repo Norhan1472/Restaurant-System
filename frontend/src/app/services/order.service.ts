@@ -17,11 +17,15 @@ export class OrderService {
         response=>response
       )
     )}
+
     getOrderByCategoryId(id:any):Observable<Order[]>{
       return this.http.get<Order[]>(`${this.baseLink}orderByCategoryId?id=${id}`).pipe(
         map(
           response=>response
         )
-      )
+      )}
+
+    getOrderByKey(key:any):Observable<Order[]>{
+      return this.http.get<Order[]>(`${this.baseLink}orderByKey?key=${key}`);
     }
 }
