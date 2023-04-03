@@ -19,18 +19,33 @@ public class OrderController {
     private OrderService orderService;
     //http://localhost:8080/api/order/v1/allOrders
     @GetMapping("allOrders")
-    public List<Order>getAllOrders(){
-        return orderService.getAllOrders();
+    public List<Order>getAllOrders(@RequestParam int pageNum ,@RequestParam int size){
+        return orderService.getAllOrders(pageNum,size);
     }
-    //http://localhost:8080/api/order/v1/orderByCategoryId?id=value
+    //http://localhost:8080/api/order/v1/ordersLength
+    @GetMapping("ordersLength")
+    public long ordersLength(){
+        return orderService.getLengthOfAllOrders();
+    }
+    //http://localhost:8080/api/order/v1/orderByCategoryId?id=value&pageNum=value&size=value
     @GetMapping("orderByCategoryId")
-    public List<Order>getOrderByCategoryId(@RequestParam long id){
-        return orderService.getOrderByCategoryId(id);
+    public List<Order>getOrderByCategoryId(@RequestParam long id,@RequestParam int pageNum,@RequestParam int size){
+        return orderService.getOrderByCategoryId(id,pageNum,size);
     }
-    //http://localhost:8080/api/order/v1/orderByKey?key=value
+    //http://localhost:8080/api/order/v1/sizeOfOrdersByCategoryId?id=value
+    @GetMapping("sizeOfOrdersByCategoryId")
+    public long getSizeOfOrdersByCategoryId(@RequestParam long id){
+        return orderService.getLengthOfOrdersByCategoryId(id);
+    }
+    //http://localhost:8080/api/order/v1/orderByKey?key=value&pageNum=value&size=value
     @GetMapping("orderByKey")
-    public List<Order>getOrderByKey(@RequestParam String key){
-        return orderService.getOrderByKey(key);
+    public List<Order>getOrderByKey(@RequestParam String key,@RequestParam int pageNum,@RequestParam int size){
+        return orderService.getOrderByKey(key,pageNum,size);
+    }
+    //http://localhost:8080/api/order/v1/sizeOfOrdersByKey?key=value
+    @GetMapping("sizeOfOrdersByKey")
+    public long getSizeOfOrdersByKey(@RequestParam String key){
+        return orderService.getSizeOfOrdersByKey(key);
     }
     //http://localhost:8080/api/order/v1/orderById?id=value
     @GetMapping("orderById")

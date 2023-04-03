@@ -4,6 +4,8 @@ import com.restaurant.restaurantsystem.entity.Order;
 import com.restaurant.restaurantsystem.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,16 +18,28 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderService {
     private OrderRepository orderRepository;
-    public List<Order>getAllOrders(){
-        return orderRepository.findAll();
+    public List<Order>getAllOrders(int pageNum,int size){
+        Pageable pageable =  PageRequest.of(pageNum,size);
+        return orderRepository.findAll(pageable).getContent();
+    }
+    public long getLengthOfAllOrders(){
+        return orderRepository.count();
     }
 
-    public List<Order>getOrderByCategoryId(long id){
-        return orderRepository.findByCategoryId(id);
+    public List<Order>getOrderByCategoryId(long id,int pageNum,int size){
+        Pageable pageable = PageRequest.of(pageNum,size);
+        return orderRepository.findByCategoryId(id,pageable);
+    }
+    public long getLengthOfOrdersByCategoryId(long id){
+        return orderRepository.getSizeOfOrdersByCategoryId(id);
     }
 
-    public List<Order>getOrderByKey(String key){
-        return orderRepository.findByNameContaining(key);
+    public List<Order>getOrderByKey(String key,int pageNum,int size){
+        Pageable pageable = PageRequest.of(pageNum,size);
+        return orderRepository.findByNameContaining(key,pageable);
+    }
+    public long getSizeOfOrdersByKey(String key){
+        return orderRepository.getSizeOfOrdersByKey(key);
     }
     public Order getOrderById(long id){
         return orderRepository.findById(id).get();
