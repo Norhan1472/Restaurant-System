@@ -17,10 +17,14 @@ import java.util.List;
 @RequestMapping("/api/order/v1")
 public class OrderController {
     private OrderService orderService;
-    //http://localhost:8080/api/order/v1/allOrders
+    //http://localhost:8080/api/order/v1/allOrders?pageNum=value&size=value
     @GetMapping("allOrders")
     public List<Order>getAllOrders(@RequestParam int pageNum ,@RequestParam int size){
         return orderService.getAllOrders(pageNum,size);
+    }
+    @GetMapping("allOrder")
+    public List<Order>getAllOrders(){
+        return orderService.getAllOrders();
     }
     //http://localhost:8080/api/order/v1/ordersLength
     @GetMapping("ordersLength")

@@ -22,6 +22,9 @@ public class OrderService {
         Pageable pageable =  PageRequest.of(pageNum,size);
         return orderRepository.findAll(pageable).getContent();
     }
+    public List<Order>getAllOrders(){
+        return orderRepository.findAll();
+    }
     public long getLengthOfAllOrders(){
         return orderRepository.count();
     }
