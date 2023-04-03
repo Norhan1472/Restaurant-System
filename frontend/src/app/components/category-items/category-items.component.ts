@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/model/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -10,7 +11,8 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryItemsComponent implements OnInit{
   categories : Category[] = [];
 
-  constructor(private categoryService:CategoryService){}
+  constructor(private categoryService:CategoryService,
+              private router:Router){}
   
   ngOnInit(): void {
     this.getAllCategories();
@@ -26,5 +28,9 @@ export class CategoryItemsComponent implements OnInit{
         console.log(error);
       }
     )
+  }
+  //(click)="goToOrder(category.id)"
+  goToOrder(id:any){
+    this.router.navigateByUrl("/category/"+id);
   }
 }

@@ -15,7 +15,8 @@ export class SearchOrderComponent implements OnInit{
   }
 
   searching(key:string){
-    this.router.navigateByUrl("category/"+key);
+    console.log(key);
+    this.router.navigateByUrl("search/"+key);
   }
 
 }

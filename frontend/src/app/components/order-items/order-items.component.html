@@ -12,4 +12,28 @@
       <button class="btn btn-primary">Add to Cart</button>
     </div>
   </div>
+  
 </div>
+<div class="col-md-9 pag" style="padding-left: 50%">
+  <ngb-pagination 
+    [(page)]="page" 
+    [pageSize]="pageSize"
+    [collectionSize]="orderSize" 
+    (pageChange)="done()"
+    [maxSize]="3"
+    [boundaryLinks]="true"
+   >
+    </ngb-pagination>
+
+  </div>
+
+  <div class="sel" style="padding-right: 50%">
+    <span class="mr-2">Page Size</span>
+    <select (change)="pageLength($event)">
+      <option>2</option>
+      <option>5</option>
+      <option selected="true">10</option>
+      <option>20</option>
+      <option>50</option>
+    </select>
+  </div>

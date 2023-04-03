@@ -8,6 +8,8 @@ import { CategoryItemsComponent } from './components/category-items/category-ite
 import { DropdownCategoryComponent } from './components/dropdown-category/dropdown-category.component';
 import { SearchOrderComponent } from './components/search-order/search-order.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+   // NgbModule,
+    NgbPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

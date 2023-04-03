@@ -10,7 +10,9 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrderItemsComponent implements OnInit{
   orders : Order[] = [];
-
+  orderSize:number = 5;
+  pageSize=5;
+  page :number =1;
   constructor(private orderService:OrderService,
               private route:ActivatedRoute){
   }
@@ -21,11 +23,15 @@ export class OrderItemsComponent implements OnInit{
         this.getData();
       }
     )
+
   }
 
   getData(){
+    console.log("kkkkk");
+   
     let checkCategoryId = this.route.snapshot.paramMap.has('id');
     let checkOrderName = this.route.snapshot.paramMap.has('key');
+    console.log(checkOrderName);
     if(checkCategoryId){
       this.getOrderByCategoryId();
     }else if(checkOrderName){
@@ -36,7 +42,8 @@ export class OrderItemsComponent implements OnInit{
   }
 
   getAllOrders():void{
-    this.orderService.getAllOrders().subscribe(
+    this.getSizeOfOrders();
+    this.orderService.getAllOrdersWithPaging(this.page-1,this.pageSize).subscribe(
       data=>{
         this.orders = data;
       },
@@ -45,10 +52,18 @@ export class OrderItemsComponent implements OnInit{
       }
     )
   }
+  getSizeOfOrders(){
+    this.orderService.getOrdersLength().subscribe(
+      data=>{
+        this.orderSize = data;
+      }
+    )
+  }
 
     getOrderByCategoryId(){
       let categoryId = this.route.snapshot.paramMap.get('id');
-      this.orderService.getOrderByCategoryId(categoryId).subscribe(
+      this.getSizeOfOrdersByCategoryId(categoryId);
+      this.orderService.getOrderByCategoryId(categoryId,this.page-1,this.pageSize).subscribe(
        data=>{
         this.orders=data;
        },
@@ -57,10 +72,18 @@ export class OrderItemsComponent implements OnInit{
        }
       )
     }
+    getSizeOfOrdersByCategoryId( id:any){
+      this.orderService.getSizeOfOrdersByCategoryId(id).subscribe(
+        data=>{
+          this.orderSize=data;
+        }
+      )
+    }
 
     getOrderByKey(){
       let orderKey = this.route.snapshot.paramMap.get('key');
-      this.orderService.getOrderByKey(orderKey).subscribe(
+      this.getSizeOfOrdersByKey(orderKey);
+      this.orderService.getOrderByKey(orderKey,this.page-1,this.pageSize).subscribe(
         data=>{
           this.orders = data;
         },
@@ -68,5 +91,25 @@ export class OrderItemsComponent implements OnInit{
           console.log(error);
         }
       )
+    }
+    getSizeOfOrdersByKey(word:any){
+      this.orderService.getSizeOfOrdersByKey(word).subscribe(
+        data=>{
+          this.orderSize=data;
+        },
+        error=>{
+          console.log(error);
+        }
+      )
+    }
+    done(){
+     // alert(this.page);
+      this.getData();
+    }
+    pageLength(event:Event){
+      console.log("here");
+      this.pageSize = +(<HTMLInputElement>event.target).value;
+      console.log(this.pageSize);
+      this.getData();
     }
 }

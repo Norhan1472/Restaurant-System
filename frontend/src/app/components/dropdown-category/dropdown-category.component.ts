@@ -44,7 +44,7 @@ export class DropdownCategoryComponent implements OnInit{
 
   getOrderByCategoryId(){
     let categoryId = this.route.snapshot.paramMap.get('id');
-    this.orderService.getOrderByCategoryId(categoryId).subscribe(
+    this.orderService.getOrderByCategoryId(categoryId,5,5).subscribe(
       data=>{
         this.orders = data;
       },
