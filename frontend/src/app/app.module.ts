@@ -9,6 +9,7 @@ import { DropdownCategoryComponent } from './components/dropdown-category/dropdo
 import { SearchOrderComponent } from './components/search-order/search-order.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartDataComponent } from './components/cart-data/cart-data.component';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     CategoryItemsComponent,
     DropdownCategoryComponent,
     SearchOrderComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    CartDataComponent
   ],
   imports: [
     BrowserModule,

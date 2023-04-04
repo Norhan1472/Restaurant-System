@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Cart } from 'src/app/model/cart';
 import { Order } from 'src/app/model/order';
+import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -11,7 +13,8 @@ import { OrderService } from 'src/app/services/order.service';
 export class OrderDetailsComponent implements OnInit{
    order : Order = new Order(0,"",new Date(),new Date(),"",0,"");
   constructor(private route:ActivatedRoute,
-              private orderService:OrderService){}
+              private orderService:OrderService,
+              private cartService:CartService){}
   ngOnInit(): void {
     this.getOrderById();
   }
@@ -27,6 +30,10 @@ export class OrderDetailsComponent implements OnInit{
         console.log(error);
       }
     )
+  }
+  addToCart(order:Order){
+    let cartData :Cart = new Cart(order);
+    this.cartService.addOrderToCart(cartData);
   }
 
 }

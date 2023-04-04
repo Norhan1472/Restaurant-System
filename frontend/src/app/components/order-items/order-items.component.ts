@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Cart } from 'src/app/model/cart';
 import { Order } from 'src/app/model/order';
+import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -14,7 +16,8 @@ export class OrderItemsComponent implements OnInit{
   pageSize=5;
   page :number =1;
   constructor(private orderService:OrderService,
-              private route:ActivatedRoute){
+              private route:ActivatedRoute,
+              private cartService:CartService){
   }
 
   ngOnInit(): void {
@@ -27,7 +30,6 @@ export class OrderItemsComponent implements OnInit{
   }
 
   getData(){
-    console.log("kkkkk");
    
     let checkCategoryId = this.route.snapshot.paramMap.has('id');
     let checkOrderName = this.route.snapshot.paramMap.has('key');
@@ -103,7 +105,6 @@ export class OrderItemsComponent implements OnInit{
       )
     }
     done(){
-     // alert(this.page);
       this.getData();
     }
     pageLength(event:Event){
@@ -111,5 +112,11 @@ export class OrderItemsComponent implements OnInit{
       this.pageSize = +(<HTMLInputElement>event.target).value;
       console.log(this.pageSize);
       this.getData();
+    }
+    addToCart(order:Order){
+      let cartData : Cart =  new Cart(order)
+      console.log(cartData);
+      this.cartService.addOrderToCart(cartData);
+
     }
 }
