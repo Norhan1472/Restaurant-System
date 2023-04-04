@@ -10,6 +10,7 @@ import { SearchOrderComponent } from './components/search-order/search-order.com
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartDataComponent } from './components/cart-data/cart-data.component';
+import { PurchasesComponent } from './components/purchases/purchases.component';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CartDataComponent } from './components/cart-data/cart-data.component';
     DropdownCategoryComponent,
     SearchOrderComponent,
     OrderDetailsComponent,
-    CartDataComponent
+    CartDataComponent,
+    PurchasesComponent
   ],
   imports: [
     BrowserModule,

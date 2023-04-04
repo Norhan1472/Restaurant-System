@@ -12,8 +12,7 @@ export class CartService {
 
   constructor() { }
   addOrderToCart(cart:Cart){
-    let calculatePrices=0 ;
-    let calculateItems =0;
+
     let checkCart: Cart | undefined = undefined;
     if(this.cartOrder.length>0)
       /*for(let cartData of this.cartOrder){
@@ -27,18 +26,33 @@ export class CartService {
       }else{
         this.cartOrder.push(cart);
       }
-      console.log("cart Data");
-      console.log(this.cartOrder);
-      console.log(this.cartOrder.length);
-      for(let data of this.cartOrder){
-        calculatePrices+=(data.quantity * data.price);
-        this.totalPrices .next(calculatePrices);
-        calculateItems +=data.quantity;
-        this.numOfItems.next(calculateItems);  
-
-      }
+      this.calculateTotals();
       console.log(this.totalPrices);
       console.log(this.numOfItems);
+  }
+  calculateTotals(){
+    let calculatePrices=0 ;
+    let calculateItems =0;
+    for(let data of this.cartOrder){
+      calculatePrices+=(data.quantity * data.price);
+      this.totalPrices .next(calculatePrices);
+      calculateItems +=data.quantity;
+      this.numOfItems.next(calculateItems);  
+    }
+  }
+  decrementOrder(order:Cart){
+    order.quantity--;
+    if(order.quantity==0){
+      this.removeFromArray(order);
+    }else{
+      this.calculateTotals();
+    }
+   
+  }
+  removeFromArray(order:Cart){
+    let index = this.cartOrder.findIndex(temp => temp.id === order.id);
+    this.cartOrder.splice(index,1);
+    this.calculateTotals;
   }
 
 }

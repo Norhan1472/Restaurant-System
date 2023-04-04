@@ -4,6 +4,7 @@ import { Cart } from 'src/app/model/cart';
 import { Order } from 'src/app/model/order';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-items',

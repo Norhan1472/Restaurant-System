@@ -4,8 +4,10 @@ import { CategoryItemsComponent } from './components/category-items/category-ite
 import { DropdownCategoryComponent } from './components/dropdown-category/dropdown-category.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrderItemsComponent } from './components/order-items/order-items.component';
+import { PurchasesComponent } from './components/purchases/purchases.component';
 
-const routes: Routes = [
+const routes: Routes = [//Purchases
+{path:'purchases',component:PurchasesComponent},
   {path:'order/:id',component:OrderDetailsComponent},
   {path:'category/:id',component:OrderItemsComponent},
 

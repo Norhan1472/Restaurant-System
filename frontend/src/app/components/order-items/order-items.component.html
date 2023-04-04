@@ -14,7 +14,7 @@
   </div>
   
 </div>
-<div class="col-md-9 pag" style="padding-left: 50%">
+<div *ngIf="orders.length>0" class="col-md-9 pag" style="padding-left: 50%">
   <ngb-pagination 
     [(page)]="page" 
     [pageSize]="pageSize"
@@ -27,7 +27,7 @@
 
   </div>
 
-  <div class="sel" style="padding-right: 50%">
+  <div *ngIf="orders.length>0" class="sel" style="padding-right: 50%">
     <span class="mr-2">Page Size</span>
     <select (change)="pageLength($event)">
       <option>2</option>
@@ -37,3 +37,11 @@
       <option>50</option>
     </select>
   </div>
+  
+  <div *ngIf="orders?.length == 0" class="alert alert-danger" role="alert">
+    No Orders Found
+  </div>
+<!--<alert>A simple primary alert—check it out!</c-alert>
+
+  <c-alert color="danger">A simple danger alert—check it out!</c-alert>
+-->
