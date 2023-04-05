@@ -11,6 +11,8 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartDataComponent } from './components/cart-data/cart-data.component';
 import { PurchasesComponent } from './components/purchases/purchases.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -22,14 +24,16 @@ import { PurchasesComponent } from './components/purchases/purchases.component';
     SearchOrderComponent,
     OrderDetailsComponent,
     CartDataComponent,
-    PurchasesComponent
+    PurchasesComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
    // NgbModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

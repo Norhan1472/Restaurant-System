@@ -5,8 +5,10 @@ import { DropdownCategoryComponent } from './components/dropdown-category/dropdo
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrderItemsComponent } from './components/order-items/order-items.component';
 import { PurchasesComponent } from './components/purchases/purchases.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [//Purchases
+{path:'checkout',component:CheckoutComponent},
 {path:'purchases',component:PurchasesComponent},
   {path:'order/:id',component:OrderDetailsComponent},
   {path:'category/:id',component:OrderItemsComponent},

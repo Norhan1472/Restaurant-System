@@ -17,3 +17,10 @@
   <div *ngIf="orders?.length == 0" class="alert alert-danger" role="alert">
     No Orders Found
   </div>
+  <div class="check-out">
+  <div class="size">Total Order : {{totalOrder}}</div>
+  <div class="totalprice">Total Price : {{totalPrice | currency: 'USD'}}</div>
+  <a routerLink="/checkout">
+  <button *ngIf="orders.length !== 0" type="button" class="btn btn-primary done">Check Out</button>
+</a>
+</div>
