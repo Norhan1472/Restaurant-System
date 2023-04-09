@@ -4,16 +4,58 @@
       <div class="input-group mb-3">
         <span class="input-group-text" >@</span>
         <input formControlName="fullName" type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
+      
+        
       </div>
   
+
+     <div *ngIf="fullName?.invalid && (fullName?.touched||fullName?.dirty)" ><!--|| fullName.errors.noSpace-->
+      <div *ngIf="fullName?.errors?.['required'] || fullName?.errors?.['noSpace']" class="alert alert-danger" role="alert">
+        Full Name Is Required
+      </div>
+      
+      <div *ngIf="fullName?.errors?.['minlength']" class="alert alert-danger" role="alert">
+        Full Name must be not less than 6 digit
+      </div>
+      </div>
+
+
       <div class="input-group mb-3">
         <input formControlName="email" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
         <span class="input-group-text" >@gmail.com</span>
+        
       </div>
-  
+      <!--|| email.error.noSpace-->
+      <div *ngIf="email?.invalid && (email?.touched||email?.dirty)" >
+        <div  *ngIf="email?.errors?.['required'] || email?.errors?.['noSpace']" class="alert alert-danger" role="alert">
+          email required
+        </div>
+        <div  *ngIf="email?.errors?.['pattern']" class="alert alert-danger" role="alert">
+          email not correct
+        </div>
+      </div>
+
+      
+      
       <div class="input-group mb-3">
         <span class="input-group-text">Phone Number</span>
         <input formControlName="phone" type="text" class="form-control"  aria-describedby="basic-addon3">
+        
+      </div>
+      
+      <div *ngIf="phone?.invalid && (phone?.touched||phone?.dirty)" >
+        <div  *ngIf="phone?.errors?.['required'] || phone?.errors?.['noSpace'] " class="alert alert-danger" role="alert"><!--|| phone.error.noSpace-->
+          phone required
+        </div>
+        <div  *ngIf="phone?.errors?.['pattern']" class="alert alert-danger" role="alert">
+          phone not correct
+        </div>
+        <div  *ngIf="phone?.errors?.['minLength']" class="alert alert-danger" role="alert">
+          phone must equal 11
+        </div>
+        <div  *ngIf="phone?.errors?.['maxLength']" class="alert alert-danger" role="alert">
+          phone must equal 11
+        </div>
       </div>
   
     </div>
@@ -22,20 +64,16 @@
     <div class="col-md-8 myorder data" formGroupName="fromPerson">
       <label class="myla">From : </label>
       <div class="input-group mb-3">
-        <select formControlName="country" class="form-select">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select formControlName="country" class="form-select" (change)="getData('from')">
+          <option *ngFor="let country of countries" [ngValue]="country.id">{{country.name}}</option>
+          
         </select>
         <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
       </div>
       <div class="input-group mb-3">
         <select formControlName="state" class="form-select" id="inputGroupSelect02">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let state of statesFrom" >{{state.name}}</option>
+          
         </select>
         <label class="input-group-text myin" for="inputGroupSelect02">State</label>
       </div>
@@ -53,21 +91,17 @@
   
     </div>
   
-    <div class="col-md-8 myorder data" formGroupName="toPerson">
+    <div class="col-md-8 myorder data" formGroupName="toPerson" >
       <label class="myla">To :</label>
-      <div class="input-group mb-3">
-        <select formControlName="country" class="form-select">
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+      <div class="input-group mb-3"  >
+        <select formControlName="country"  class="form-select" (change)="getData('to')">
+          <option *ngFor="let country of countries" [ngValue]="country.id">{{country.name}}</option>
         </select>
         <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
       </div>
       <div class="input-group mb-3">
         <select formControlName="state" class="form-select" >
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let state of statesTo" >{{state.name}}</option>
         </select>
         <label class="input-group-text myin" >State</label>
       </div>
