@@ -22,6 +22,8 @@ public class RequestOrder extends CommonData{
     private String note;
     @Column(name = "totalQuantity")
     private int totalQuantity;
+    @Column(name = "totalPrice")
+    private int totalPrice;
     @ManyToOne
     @JoinColumn(name ="client_id")
     private Client client;
