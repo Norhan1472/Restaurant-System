@@ -20,4 +20,8 @@ public class Client extends PublicData{
     private String phone;
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
     private Set<RequestOrder>requestOrders = new HashSet<>();
+    public void addRequestOrder(RequestOrder requestOrder){
+        requestOrders.add(requestOrder);
+        requestOrder.setClient(this);
+    }
 }
