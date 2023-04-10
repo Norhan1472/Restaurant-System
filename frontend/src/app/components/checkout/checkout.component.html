@@ -39,22 +39,22 @@
       
       <div class="input-group mb-3">
         <span class="input-group-text">Phone Number</span>
-        <input formControlName="phone" type="text" class="form-control"  aria-describedby="basic-addon3">
+        <input formControlName="phone" type="text" class="form-control" placeholder="Recipient's phone number"  aria-describedby="basic-addon3">
         
       </div>
       
       <div *ngIf="phone?.invalid && (phone?.touched||phone?.dirty)" >
-        <div  *ngIf="phone?.errors?.['required'] || phone?.errors?.['noSpace'] " class="alert alert-danger" role="alert"><!--|| phone.error.noSpace-->
+        <div  *ngIf="phone?.errors?.['required'] || phone?.errors?.['noSpace'] " class="alert alert-danger" role="alert">
           phone required
         </div>
         <div  *ngIf="phone?.errors?.['pattern']" class="alert alert-danger" role="alert">
           phone not correct
         </div>
-        <div  *ngIf="phone?.errors?.['minLength']" class="alert alert-danger" role="alert">
+        <div  *ngIf="phone?.errors?.['minlength']" class="alert alert-danger" role="alert">
           phone must equal 11
         </div>
         <div  *ngIf="phone?.errors?.['maxLength']" class="alert alert-danger" role="alert">
-          phone must equal 11
+          phone must less than this digit
         </div>
       </div>
   
