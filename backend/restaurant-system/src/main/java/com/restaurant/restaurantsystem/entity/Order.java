@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "orders")
-public class Order extends CommonData{
+public class Order extends PublicData{
     @Column(name = "image")
     private String img;
     @Column(name = "price")

@@ -15,8 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @MappedSuperclass
 public class CommonData extends BaseEntity{
-    @Column(name = "name")
-    private String name;
+
     @CreationTimestamp
     @Column(name = "create_date")
     private Date createdDate;

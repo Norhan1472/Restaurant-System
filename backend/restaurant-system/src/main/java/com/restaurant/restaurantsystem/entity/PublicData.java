@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public class PublicData extends BaseEntity{
+public class PublicData extends CommonData{
     @Column(name = "name")
     private String name ;
 }

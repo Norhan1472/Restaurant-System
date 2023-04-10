@@ -15,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "category")
-public class Category extends CommonData{
+public class Category extends PublicData{
     @Column(name = "categoryLogo")
     private String categoryLogo;
     @OneToMany(mappedBy = "category")
