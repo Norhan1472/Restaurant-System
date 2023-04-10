@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Country } from 'src/app/model/country';
 import { SpaceValidator } from 'src/app/model/space-validator';
 import { State } from 'src/app/model/state';
+import { CartService } from 'src/app/services/cart.service';
 import { CountryService } from 'src/app/services/country.service';
 import { StateService } from 'src/app/services/state.service';
 
@@ -12,6 +13,8 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit{
+  numOfOrders:number =0;
+  totalPrice:number=0;
   checkoutFormParent!:FormGroup;
   countries:Country[] = [];
   statesFrom :State[] = [];
@@ -19,11 +22,13 @@ export class CheckoutComponent implements OnInit{
   countryId!:number;
   constructor(private checkoutChildForm:FormBuilder,
               private countryService : CountryService,
-              private stateService : StateService){}
+              private stateService : StateService,
+              private cartService:CartService){}
   
   ngOnInit(): void {
 this.formsData();
 this.getAllCountries();
+this.getTotals();
   }
 
   formsData(){
@@ -154,6 +159,27 @@ get phone(){
     
     
     this.getStatesByCountryId(type);
+  }
+
+  getTotals(){
+    this.cartService.calculateTotals();
+   // this.cartService.calculateTotals()
+   this.cartService.numOfItems.subscribe(
+    data=>{
+      this.numOfOrders = data;
+    },
+    error=>{
+      console.log(error);
+    }
+   );
+   this.cartService.totalPrices.subscribe(
+    data=>{
+      this.totalPrice = data;
+    },
+    error=>{
+      console.log(error);
+    }
+   )
   }
 
 
